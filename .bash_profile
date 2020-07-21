@@ -33,7 +33,8 @@ __prompt_command() {
         PS1+="${Gre}\u${RCol}"
     fi
 
-    PS1+="${RCol}@${BBlu}\h ${Pur}\W${BYel}$ ${RCol}"
+    PS1+="${RCol}@${BBlu}\h ${Pur}\W${BYel}\\$ ${RCol}"    
+    echo -ne "\e]0;${USERNAME}@${HOSTNAME}:${PWD}\a"
 }
 
 
@@ -89,7 +90,8 @@ __prompt_command() {
         PS1+=\"\${Gre}\\u\${RCol}\"
     fi
 
-    PS1+=\"\${RCol}@\${BYel}\\h \${Pur}\\W\${BYel}\$ \${RCol}\"
+    PS1+=\"\${RCol}@\${BYel}\\h \${Pur}\\W\${BYel}\\\\$ \${RCol}\"    
+    echo -ne \"\\e]0;\${USERNAME:-\$USER}@\${HOSTNAME}:\${PWD}\\a\"
 }
 
         test ! -d ~/.ssh && mkdir ~/.ssh;
