@@ -1,9 +1,9 @@
 import React from 'react'
-import {View,Text} from 'react-native'
+import {View,Text,StyleSheet} from 'react-native'
 
 export default props => {
     return(
-        <View> 
+        <View style={styles.container}> 
             <Text>
                 {props.desc}
             </Text>
@@ -16,3 +16,12 @@ export default props => {
         </View>
     )
 }
+const styles = StyleSheet.create({
+    container:{
+        flexDirection:'row',
+        borderColor:'#AAAAAA',
+        borderBottomWidth:2,        
+        alignItems:'center',
+        paddingVertical:10
+    }
+})
