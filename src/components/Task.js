@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Text,StyleSheet} from 'react-native'
+import {View,Text,StyleSheet,TouchableWithoutFeedback} from 'react-native'
 import commonStyles from '../commonStyles'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment'
@@ -11,9 +11,11 @@ export default props => {
     const formattedDate = moment(date).locale('pt-br').format('ddd, D [de] MMMM')
     return(
         <View style={styles.container}> 
-            <View style={styles.checkContainer}>
-                {getCheckView(props.doneAt)}
-            </View>
+            <TouchableWithoutFeedback onPress={()=> props.toggleTask(props.id)}>
+                <View style={styles.checkContainer}>
+                    {getCheckView(props.doneAt)}
+                </View>
+            </TouchableWithoutFeedback>
             <View>
                 <Text style={[styles.desc,doneOrNotStyle]}>
                     {props.desc}
