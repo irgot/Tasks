@@ -1,20 +1,39 @@
 import React from 'react'
 import {View,Text,StyleSheet} from 'react-native'
-
+import commonStyles from '../commonStyles'
+import Icon from 'react-native-vector-icons/FontAwesome'
 export default props => {
     return(
         <View style={styles.container}> 
-            <Text>
-                {props.desc}
-            </Text>
-            <Text>
-                {props.estimateAt + ""}
-            </Text>
-            <Text>
-                {props.doneAt + ""}
-            </Text>
+            <View style={styles.checkContainer}>
+                {getCheckView(props.doneAt)}
+            </View>
+            <View>
+                <Text>
+                    {props.desc}
+                </Text>
+                <Text>
+                    {props.estimateAt + ""}
+                </Text>
+            </View>
         </View>
     )
+}
+function getCheckView(doneAt){
+    if(doneAt!=null){
+        return(
+            <View style={styles.done}>
+                <Icon name='check' size={20} color='#ffffff'></Icon>
+            </View>
+        )
+    }
+    else{
+        return(
+            <View style={styles.pending}>
+                <Text></Text>
+            </View>
+        )
+    }
 }
 const styles = StyleSheet.create({
     container:{
@@ -23,5 +42,26 @@ const styles = StyleSheet.create({
         borderBottomWidth:2,        
         alignItems:'center',
         paddingVertical:10
+    },
+    checkContainer:{
+        width:'20%',
+        alignContent:'center',
+        alignItems:'center'
+    },
+    pending:{
+        height:25,
+        width: 25,
+        borderRadius:13,
+        borderWidth:1,
+        borderColor:'#555'
+    },
+    done:{
+        height:25,
+        width: 25, 
+        borderRadius:13,
+        backgroundColor:'#4d7031',
+        alignContent:'center',
+        alignItems:'center',
+        paddingTop:2,
     }
 })
