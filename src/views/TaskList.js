@@ -6,11 +6,13 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import commonStyles from '../commonStyles'
 import 'moment/locale/pt-br'
 import Task from '../components/Task'
+import AddTask from './AddTask'
 
 export default class TaskList extends Component{
     state ={
         showDoneTasks: true,
         visibleTasks: [],
+        showAddTask: true,
         tasks:[
             {
                 id: Math.random(),
@@ -24,6 +26,7 @@ export default class TaskList extends Component{
                 estimatedAt: new Date(),
                 doneAt: null,
             },
+
         ]
     }
     componentDidMount = () =>{
@@ -59,6 +62,7 @@ export default class TaskList extends Component{
         
         return(
             <View style={styles.container}>
+                <AddTask isVisible={this.state.showAddTask} onCancel={()=> this.setState({showAddTask:false})}></AddTask>
                 <ImageBackground source={todayImage} style={styles.background}>
                     <View style={styles.iconBar}>
                         <TouchableOpacity onPress={this.toggleFilter}>
