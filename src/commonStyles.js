@@ -4,5 +4,6 @@ export default {
         secundary:'#ffffff',
         mainText: '#222222',
         subText: '#555555',
+        today: '#b13b44',
     },
 }
