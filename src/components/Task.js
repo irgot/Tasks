@@ -3,13 +3,14 @@ import {View,Text,StyleSheet} from 'react-native'
 import commonStyles from '../commonStyles'
 import Icon from 'react-native-vector-icons/FontAwesome'
 export default props => {
+    const doneOrNotStyle = props.doneAt != null ? { textDecorationLine:'line-through'}:{}
     return(
         <View style={styles.container}> 
             <View style={styles.checkContainer}>
                 {getCheckView(props.doneAt)}
             </View>
             <View>
-                <Text>
+                <Text style={[styles.desc,doneOrNotStyle]}>
                     {props.desc}
                 </Text>
                 <Text>
@@ -63,5 +64,11 @@ const styles = StyleSheet.create({
         alignContent:'center',
         alignItems:'center',
         paddingTop:2,
+    },
+    desc:{
+        fontFamily: commonStyles.fontFamily,
+        color:commonStyles.colors.mainText,
+        fontSize:15,
+
     }
 })
